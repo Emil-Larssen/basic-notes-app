@@ -61,3 +61,31 @@ So what does that mean? I suppose it means I gotta make the button link to a met
 But before that, lets do some TDD.  
 First test should probably just assert that a 200 OK response happens, but what do I know.  
 Also, what test ? How ?
+
+First, figure out what class tests should live in.  
+That means we have to know what class we are testing for because naming of the testclass follows that.  
+So now we have to consider the architecture already. (sort of)  
+Anyway, we are posting and viewing "Notes" so we will probably get a class with that.  
+In order to manage those notes we probably need a NoteService (at least that seems like a reasonable choice presently).
+
+But wait!, dependencies???  
+I have been led to believe that spring-boot-starter-test should be used here.  
+The pom.xml I got form spring initializr has the ones with webmvc-test and thymeleaf-test but not the plain -test.  
+So lets add that in (dont ask me if this is necessary, I have no idea).
+
+Anyway, returning to the test.
+What we want to test is probably that when a note is added to the noteList (a list residing in Notes.java)  
+But hang on, packages??? since this a simple app do we just leave everything in the same package? is that a good idea??  
+Ok, no, not a good idea, lets at least make a basic structure which appears to be model, controller and service.
+
+Ive been fumbling a bit around with the test and accidentally made it require a "Notes.java", but that doesnt follow,  
+The NoteService.java should handle the lifecycle of a Note.java, which does NOT have any functionality, it is simply string objects.  
+Thus the noteShouldBeAddedToNoteList() now creates an instance of NoteService and NOT Note(s).  
+Silly me, I stand corrected once again.  
+
+And once again we backtrack a little.
+There are now two test, one testing that the noteslist is not empty after a note is added, and a second test that  
+the content is indeed the correct one.
+Getting these green now means that the core behaviour of the project is now implemented seeing as the plumbing to post  
+a note into the noteslist in the backend actually works.  
+Next will be a matter of making the textfield from the webpage become the content posted in the noteslist.
