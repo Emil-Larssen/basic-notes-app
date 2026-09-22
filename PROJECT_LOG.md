@@ -26,3 +26,10 @@ And extract to project folder to then open in IDE, that's a start!
 **To Git or Not to Git**  
 I should probably create a git repository right off the bat...
 
+**How do I even run this thing?**  
+Gonna see what the initial setup does on its own.  
+And thus I learned to access it on http://localhost:8080  
+
+**Weird thing**  
+I had already removed a duplicate folder after extracting the zip from spring initializr  
+Apparently there was yet another one on the initial commit. Now corrected for a critical commit.
