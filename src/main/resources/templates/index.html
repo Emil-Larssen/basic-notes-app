@@ -6,15 +6,17 @@
 
     <body>
         <h1>This is the Basic Notes App</h1>
-        <form>
+        <form action="/notes" method="POST">
             <label for="noteinput">Note input field:</label><br>
-            <input type="text" id="noteinput"><br>
+            <input type="text" id="noteinput" name="noteinput"><br>
             <input type="submit" value="Post note">
         </form>
 
         <h2>Notes</h2>
         <ul>
-            <li>Placeholder note</li>
+            <li th:each="note : ${notes}"
+                th:text="${note.text}">
+            </li>
         </ul>
     </body>
 
